@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meteora - 3D Planet Explorer</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- NEON GLOW -->
+    <div class="glow-bubble-container">
+      <div class="glow-bubble bubble1"></div>
+      <div class="glow-bubble bubble2"></div>
+      <div class="glow-bubble bubble3"></div>
+      <div class="glow-bubble bubble4"></div>
+    </div>
+
+    <!-- Parallax Stars -->
+    <div class="starfield background"></div>
+    <div class="starfield foreground"></div>
+
+    <!-- Planet Info -->
+    <div class="main-content">
+      <h1 class="planet-title" id="planetTitle">ETHERON</h1>
+      <div class="planet-info" id="planetInfo">
+        <div class="info-item">
+          <h4>GALAXY</h4>
+          <p id="galaxy">Andromeda-IV</p>
+        </div>
+        <div class="info-item">
+          <h4>DIAMETER</h4>
+          <p id="diameter">16,400 km</p>
+        </div>
+        <div class="info-item">
+          <h4>DAY LENGTH</h4>
+          <p id="dayLength">26 Earth hours</p>
+        </div>
+        <div class="info-item">
+          <h4>AVG TEMPERATURE</h4>
+          <p id="temperature">-20°C to 0°C</p>
+        </div>
+        <div class="info-item">
+          <h4>CLIMATE</h4>
+          <p id="climate">Polar</p>
+        </div>
+      </div>
+
+      <!-- Solar System -->
+      <div class="solar-system">
+        <!-- Orbits + CSS Colored Planets (Wrapped in Rotators) -->
+        <div class="orbit orbit-3">
+          <div class="planet-rotator">
+            <div class="planet planet-orbit-1"></div>
+          </div>
+        </div>
+
+        <div class="orbit orbit-4">
+          <div class="planet-rotator">
+            <div class="planet planet-orbit-2"></div>
+          </div>
+        </div>
+
+        <div class="orbit orbit-5">
+          <div class="planet-rotator">
+            <div class="planet planet-orbit-3"></div>
+          </div>
+        </div>
+
+        <div class="orbit orbit-6">
+          <div class="planet-rotator">
+            <div class="planet planet-orbit-4"></div>
+          </div>
+        </div>
+
+        <!-- Optionally one more -->
+        <div class="orbit orbit-6">
+          <div class="planet-rotator">
+            <div class="planet planet-orbit-4"></div>
+          </div>
+        </div>
+
+        <!-- Center Planet Image -->
+        <div class="planet-main-wrapper">
+          <img
+            src="images/img1.png"
+            alt="ETHERON"
+            id="mainPlanet"
+            class="planet-image planet-main"
+          />
+        </div>
+      </div>
+
+      <!-- carousel -->
+      <!-- carousel -->
+      <!-- Thumbnails Only -->
+      <div class="planet-thumbnails">
+        <!-- Thumbnails -->
+        <img id="thumbLeft" class="planet-thumb thumb-left" />
+        <img id="thumbRight" class="planet-thumb thumb-right" />
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

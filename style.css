@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1c1c35 0%, #0e1834 50%, #01060d 100%);
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  
+}
+
+
+
+
+/* STARS */
+.starfield {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  
+}
+.starfield span {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: sparkle 3s ease-in-out infinite alternate;
+}
+.starfield.background span { width: 1px; height: 1px; z-index: 1; animation-duration: 4s; }
+.starfield.foreground span { width: 2px; height: 2px; z-index: 2; animation-duration: 2.5s; }
+
+@keyframes sparkle {
+  0%   { opacity: 0.3; filter: drop-shadow(0 0 1px #fff); }
+  50%  { opacity: 1;   filter: drop-shadow(0 0 2px #ffd700); }
+  100% { opacity: 0.4; filter: drop-shadow(0 0 1px #aaf); }
+}
+
+/* ORBITS */
+.orbit {
+  position: absolute;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit.spin {
+  animation: orbitRingSpin 0.6s ease-out;
+}
+
+.orbit-3 { width: 500px; height: 500px; }
+.orbit-4 { width: 600px; height: 600px; }
+.orbit-5 { width: 700px; height: 700px; }
+.orbit-6 { width: 800px; height: 800px; }
+
+/* PLANETS */
+.planet {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: -50%;
+}
+
+.planet.spin {
+  animation: orbitPlanetSpin 0.6s ease-out;
+}
+
+
+.planet-title{
+  color: white;
+}
+
+h1{
+  margin: 4px;
+}
+
+h4{
+  color: whitesmoke;
+  margin-top: 4px;
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+#galaxy,#diameter,#dayLength, #temperature, #climate{
+  color: rgb(171, 164, 164);
+  margin-left: 12px;
+}
+
+#planetInfo{
+  background-color: #003161;
+  padding: 4px;
+  width: 20%;
+  margin: 4px;
+  border-radius: 5%;
+}
+
+/* Elliptical Alignment */
+.planet-orbit-1 {
+  width: 24px; height: 24px;
+  background: linear-gradient(#ba9f09, #1c1700);
+  transform: rotate(30deg) translateX(225px) translateY(-55px);
+}
+.planet-orbit-2 {
+  width: 35px; height: 35px;
+  background: linear-gradient(#66b303, #012828);
+  transform: rotate(90deg) translateX(190px) translateY(-190px);
+}
+.planet-orbit-3 {
+ 
+  background: linear-gradient(#7b1c4b, #110107);
+  transform: rotate(180deg) translateX(195px) translateY(-178px);
+}
+.planet-orbit-4 {
+  width: 45px; height: 45px;
+  background: linear-gradient(#003161, #9dc8d7 );
+  transform: rotate(270deg) translateX(350px) translateY(-120px);
+}
+
+
+
+
+/* CENTER PLANET */
+.planet-main-wrapper {
+  position: absolute;
+  width: 570px;
+  height: 570px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-main {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.planet-main.spin{
+  animation: mainPlanetSpin 0.6s ease-out;
+}
+
+.planet-thumbnails {
+  position: relative; /* relative to .main-content */
+  width: 100%;
+  height: 0; /* prevent shifting layout */
+  z-index: 5;
+}
+
+.planet-thumb {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(90%);
+}
+
+/* .planet-thumb:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+} */
+
+.thumb-left {
+  left: -70px;
+}
+
+.thumb-right {
+  right: -70px;
+}
+
+/* NEON GLOW PER PLANET */
+.glow-etheron {
+  filter: drop-shadow(0 0 10px #EE2FE0);
+}
+
+.glow-lumenara {
+  filter: drop-shadow(0 0 10px #f88a2a);
+}
+
+.glow-theronix {
+  filter: drop-shadow(0 0 10px #3a9578);
+}
+
+.glow-orionis {
+  filter: drop-shadow(0 0 10px #01071f);
+}
+
+
+/* BACKGROUND GLOW */
+
+.glow-bubble-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  filter: brightness(1.2) saturate(1.5);
+}
+
+.glow-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-color, #ff00cc) 0%, transparent 70%);
+  opacity: 1;
+  filter: blur(120px);
+  mix-blend-mode: screen;
+  animation: 
+    bubbleFloat 20s ease-in-out infinite alternate,
+    bubbleDrift 60s ease-in-out infinite alternate,
+    bubblePulse 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Unique bubble positions */
+.bubble1 {
+  top: 5%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  --glow-color: #ee2fe0;
+  animation-delay: 0s;
+}
+
+.bubble2 {
+  top: 60%;
+  right: -20%;
+  width: 700px;
+  height: 700px;
+  --glow-color: #00ffee;
+  animation-delay: 5s;
+}
+
+.bubble3 {
+  top: -10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  --glow-color: #f8f62a;
+  animation-delay: 8s;
+}
+
+.bubble4 {
+  bottom: -20%;
+  left: 25%;
+  width: 600px;
+  height: 600px;
+  --glow-color: #3f99cb;
+  animation-delay: 12s;
+}
+
+
+.planet-rotator {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  transform-origin: center center;
+  transition: transform 0.6s ease-in-out;
+}
+
+.planet-rotator.spin {
+  animation: orbitPlanetSpin 0.6s ease-out;
+}
+
+@keyframes orbitPlanetSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(15deg); }
+}
+
+
+/* Float (Y-axis bounce) */
+@keyframes bubbleFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-50px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Drift (X-axis sway and rotate) */
+@keyframes bubbleDrift {
+  0%   { transform: translateX(0px) rotate(0deg) scale(1); }
+  50%  { transform: translateX(60px) rotate(1deg) scale(1.05); }
+  100% { transform: translateX(0px) rotate(0deg) scale(1); }
+}
+
+/* Pulse glow (breathing effect) */
+@keyframes bubblePulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+
+@keyframes mainPlanetSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-90deg); }
+}
+
+@keyframes orbitPlanetSpin {
+  0% { transform: rotate(0deg) translateX(); }
+  100% { transform: rotate(15deg) translateX(0); }
+}
+
+@keyframes orbitRingSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(-10deg); }
+}
+
+
+
+
+
+
